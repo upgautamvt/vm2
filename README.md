@@ -41,7 +41,7 @@ libtinfo-dev terminator libstdc++-11-dev libstdc++-12-dev libstdc++-13-dev libst
 xterm trace-cmd tcpdump flex bison rsync python3-venv ltrace sysdig kmod xdp-tools net-tools \
 openssh-client openssh-server strace bpftrace tmux gdb xterm attr busybox curl vim htop openssl \
 genisoimage pciutils clang llvm libvirt-daemon-system libvirt-clients qemu-kvm \
-libbpf-dev linux-tools-common libbpfcc-dev libbpfcc binutils-dev dwarves"
+libbpf-dev linux-tools-common libbpfcc-dev libbpfcc binutils-dev dwarves libcap-dev"
 ```
 
 ```cmake
@@ -69,6 +69,7 @@ cd tools/bpf/bpftool
 make
 
 # go back to linux root directory
+sudo ln -s /usr/include/x86_64-linux-gnu/asm /usr/include/asm
 
 sudo make modules_install
 suo make install
