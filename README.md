@@ -45,7 +45,7 @@ libbpf-dev linux-tools-common libbpfcc-dev libbpfcc binutils-dev dwarves libcap-
 ```
 
 ```cmake
-git clone git@github.com:upgautamvt/vm<X>.git
+git clone ggit@github.com:rosalab/bpfabsorb.git
 cd bpfabsorb/linux # linux root directory
 
 # do these 4 lines; otherwise make fails
