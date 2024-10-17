@@ -1,0 +1,2 @@
+The iso that gets generated after you run corresponding make-cloudinit-vm.bash
+This iso contains cloud init information such as setting your username and installing other packages if necessary.

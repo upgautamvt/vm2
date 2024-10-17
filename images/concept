@@ -1,0 +1,5 @@
+You have to download your Ubuntu cloud image here
+wget https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
+mv noble-server-cloudimg-amd64.img noble-server-cloudimg-amd64.img noble-server-cloudimg-amd64-vm2.img
+
+There is download-img script, so you can use this.
