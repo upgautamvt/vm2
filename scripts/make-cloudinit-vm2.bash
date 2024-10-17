@@ -4,7 +4,17 @@
 HOSTNAME="sriov-vm2"
 USERNAME="rosa"
 PASSWORD="rosalab"
-PACKAGES="curl vim htop make cmake"  # Add your predefined packages here
+
+PACKAGES="\
+    git build-essential gcc g++ fakeroot libncurses5-dev libssl-dev ccache dwarves libelf-dev \
+    cmake automake mold libdw-dev libdwarf-dev bpfcc-tools libbpfcc-dev libbpfcc linux-headers-generic \
+    libtinfo-dev terminator libstdc++-11-dev libstdc++-12-dev libstdc++-13-dev libstdc++-14-dev bc fping \
+    xterm trace-cmd tcpdump flex bison rsync python3-venv ltrace sysdig kmod xdp-tools net-tools ip \
+    openssh-client openssh-server strace bpftrace tmux gdb xterm attr busybox curl vim htop openssl \
+    genisoimage pciutils clang llvm libvirt-daemon-system libvirt-clients qemu-kvm \
+    libbpf-dev bpftool linux-tools-$(uname -r) libbpfcc-dev libbpfcc"
+
+
 CLOUD_INIT_DIR="cloud-init-data"
 ISO_NAME="../seeds/vm2-seed.iso"
 

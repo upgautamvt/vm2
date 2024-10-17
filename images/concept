@@ -3,3 +3,5 @@ wget https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.i
 mv noble-server-cloudimg-amd64.img noble-server-cloudimg-amd64.img noble-server-cloudimg-amd64-vm2.img
 
 There is download-img script, so you can use this.
+
+qemu-img resize noble-server-cloudimg-amd64-vm2.img +50G

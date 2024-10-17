@@ -2,9 +2,9 @@
 
 qemu-system-x86_64  \
   -enable-kvm \
-  -smp 4 \
+  -smp 8 \
   -cpu host \
-  -m 8G \
+  -m 16G \
   -nographic \
   -device virtio-net-pci,netdev=net0 \
   -netdev user,id=net0,hostfwd=tcp::2222-:22 \
