@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libvirt-daemon-system \
     libvirt-clients \
     qemu-kvm \
+    gcc-multilib \
     build-essential \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
