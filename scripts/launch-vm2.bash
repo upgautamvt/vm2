@@ -2,7 +2,7 @@
 
 qemu-system-x86_64  \
   -enable-kvm \
-  -smp 4 \
+  -smp 8 \
   -cpu host \
   -m 16G \
   -nographic \
