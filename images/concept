@@ -1,5 +1,6 @@
-You have to download your Ubuntu cloud image here
-wget https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
-mv noble-server-cloudimg-amd64.img noble-server-cloudimg-amd64.img noble-server-cloudimg-amd64-vm2.img
+copy the .img disk (ask Uddhav), where linux is already compiled so that
+you don't need to compile again.
 
-There is download-img script, so you can use this.
+Note: in launch-vm<X>.bash script use your VFIO id.
+    Also use your different port if you are developing in the
+    same shared machine and someone already using your port.

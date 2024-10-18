@@ -4,7 +4,9 @@
 HOSTNAME="sriov-vm2"
 USERNAME="rosa"
 PASSWORD="rosalab"
-PACKAGES="curl vim htop make cmake"  # Add your predefined packages here
+
+PACKAGES=""
+
 CLOUD_INIT_DIR="cloud-init-data"
 ISO_NAME="../seeds/vm2-seed.iso"
 
