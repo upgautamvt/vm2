@@ -40,9 +40,10 @@ sudo apt install -y git gcc-multilib build-essential gcc g++ cpio fakeroot libnc
 
 ```cmake
 git clone ggit@github.com:rosalab/bpfabsorb.git
+git submodule update --init --recursive
 cd bpfabsorb/linux # linux root directory
 
-# do these 4 lines; otherwise make fails
+# do these 4 lines; otherwise make fails. This is required only if you install real linux 
 scripts/config --disable SYSTEM_TRUSTED_KEYS
 scripts/config --disable SYSTEM_REVOCATION_KEYS
 scripts/config --set-str CONFIG_SYSTEM_TRUSTED_KEYS ""
@@ -67,7 +68,7 @@ sudo ln -s /usr/include/x86_64-linux-gnu/asm /usr/include/asm
 
 sudo make modules_install
 suo make install
-reboot
+reboot #  you must be able to boot with your compiled custom kernel
 ```
 
 # If you are using rosa network testbed
