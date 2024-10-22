@@ -7,18 +7,62 @@
 
 * For launch-vm<X>.bash
 
-```cmake
+```yaml
 qemu-system-x86_64  \
--enable-kvm \
--smp 8 \
--cpu host \
--m 16G \
--nographic \
--device virtio-net-pci,netdev=net0 \
--netdev user,id=net0,hostfwd=tcp::2222-:22 \
--drive if=virtio,format=qcow2,file=../images/noble-server-cloudimg-amd64-vm<X>.img \
--drive if=virtio,media=cdrom,file=../seeds/vm<X>-seed.iso \
--device vfio-pci,host=0000:<your_vfio_pcie_id>
+  -enable-kvm \
+  -smp 8 \
+  -cpu host \
+  -m 16G \
+  -nographic \
+  -device virtio-net-pci,netdev=net0 \
+  -netdev user,id=net0,hostfwd=tcp::2222-:22 \
+  -drive if=virtio,format=qcow2,file=../images/noble-server-cloudimg-amd64-vm<X>.img \
+  -drive if=virtio,media=cdrom,file=../seeds/vm<X>-seed.iso \
+  -device vfio-pci,host=0000:<your_vfio_pcie_id>
+```
+
+or, you can even install your from ubuntu dekstop or server image using live cd
+```cmake
+qemu-img create -f qcow2 ../images/ubuntu2404.img 60G
+
+# Run QEMU with the specified parameters. This is GUI installation
+qemu-system-x86_64  \
+    -enable-kvm \
+    -smp 4 \
+    -cpu host \
+    -m 16G \
+    -device virtio-net-pci,netdev=net0 \
+    -netdev user,id=net0,hostfwd=tcp::2222-:22 \
+    -drive if=virtio,format=qcow2,file=../images/ubuntu2404.qcow2 \
+    -device vfio-pci,host=0000:01:00.2
+
+Then, we can also fix the problematic disk's low /boot parition or other problem by runing GUI ubuntu
+
+qemu-system-x86_64  \
+    -enable-kvm \
+    -smp 4 \
+    -cpu host \
+    -m 16G \
+    -device virtio-net-pci,netdev=net0 \
+    -netdev user,id=net0,hostfwd=tcp::2222-:22 \
+    -drive if=virtio,format=qcow2,file=../images/ubuntu2404.qcow2 \
+    -drive if=virtio,format=qcow2,file=../images/noble-server-cloudimg-amd64-vm2.img \
+    -device vfio-pci,host=0000:01:00.2 \
+    -boot d
+
+and then finally fall back to our cloud init boot
+
+qemu-system-x86_64  \
+    -enable-kvm \
+    -smp 8 \
+    -cpu host \
+    -m 16G \
+    -nographic \
+    -device virtio-net-pci,netdev=net0 \
+    -netdev user,id=net0,hostfwd=tcp::2222-:22 \
+    -drive if=virtio,format=qcow2,file=../images/noble-server-cloudimg-amd64-vm2.img \
+    -drive if=virtio,media=cdrom,file=../seeds/vm2-seed.iso \
+    -device vfio-pci,host=0000:01:00.2
 ```
 
 
@@ -50,7 +94,8 @@ scripts/config --disable SYSTEM_REVOCATION_KEYS
 scripts/config --set-str CONFIG_SYSTEM_TRUSTED_KEYS ""
 scripts/config --set-str CONFIG_SYSTEM_REVOCATION_KEYS ""
 
-make oldconfig 
+make olddefconfig
+#make oldconfig 
 
 
 fakeroot make -j`nproc` # compiles linux
@@ -67,7 +112,7 @@ make
 sudo ln -s /usr/include/x86_64-linux-gnu/asm /usr/include/asm
 
 sudo make modules_install
-suo make install
+sudo make install
 reboot #  you must be able to boot with your compiled custom kernel
 ```
 
