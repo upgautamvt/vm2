@@ -54,7 +54,7 @@ and then finally fall back to our cloud init boot
 
 qemu-system-x86_64  \
     -enable-kvm \
-    -smp 8 \
+    -smp 4 \
     -cpu host \
     -m 16G \
     -nographic \
