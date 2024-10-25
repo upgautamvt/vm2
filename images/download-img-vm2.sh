@@ -20,7 +20,7 @@ else
   # Confirm completion
   if [ -f "$NEW_FILE_NAME" ]; then
     echo "Download and rename successful. File saved as: $NEW_FILE_NAME"
-    qemu-img resize "$NEW_FILE_NAME" +50G
+    qemu-img resize "$NEW_FILE_NAME" +70G
   else
     echo "Error: The file was not renamed successfully."
   fi

@@ -13,7 +13,7 @@ enter-docker:
 	--device=/dev/vfio:/dev/vfio \
 	--device=/dev/kvm:/dev/kvm --device=/dev/net/tun:/dev/net/tun \
     --network host \
-	-v ${BASE_PROJ}:/testvm2 \
+	-v ${BASE_PROJ}/../:/testvm2 \
 	-p 127.0.0.1:${SSH_PORT}:52222 \
 	-p 127.0.0.1:${DOCKER_PORT}:1234 \
 	-p 127.0.0.1:${GDB_PORT}:1234 \

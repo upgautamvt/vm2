@@ -3,7 +3,7 @@ FROM ubuntu:22.04 AS linux-builder
 RUN apt-get update && apt-get install -y \
     openssl \
     genisoimage \
-    qemu \
+    qemu nano \
     wget curl \
     pciutils \
     libvirt-daemon-system \
